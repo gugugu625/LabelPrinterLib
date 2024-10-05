@@ -1,7 +1,6 @@
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Release\net6.0\LabelPrinterLib.deps.json
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Release\net6.0\LabelPrinterLib.dll
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Release\net6.0\LabelPrinterLib.pdb
-I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.csproj.AssemblyReference.cache
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.GeneratedMSBuildEditorConfig.editorconfig
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.AssemblyInfoInputs.cache
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.AssemblyInfo.cs

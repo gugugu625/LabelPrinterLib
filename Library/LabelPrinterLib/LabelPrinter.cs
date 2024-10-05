@@ -1,6 +1,4 @@
-﻿using System.IO.Ports;
-
-namespace LabelPrinterLib
+﻿namespace LabelPrinterLib
 {
     public interface ISerialPortService
     {
@@ -8,7 +6,7 @@ namespace LabelPrinterLib
         void Close();
         void Write(byte[] buffer, int offset, int count);
         byte[] Read(int bufferSize); // 同步读取
-        Task<byte[]> ReadAsync(int bufferSize); // 异步读取
+        //Task<byte[]> ReadAsync(int bufferSize); // 异步读取
         bool IsOpen { get; }
         //event EventHandler<byte[]> DataReceived;
     }

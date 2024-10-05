@@ -1,0 +1,12 @@
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Debug\net8.0\LabelPrinterLib.deps.json
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Debug\net8.0\LabelPrinterLib.dll
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\bin\Debug\net8.0\LabelPrinterLib.pdb
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.GeneratedMSBuildEditorConfig.editorconfig
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.AssemblyInfoInputs.cache
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.AssemblyInfo.cs
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.csproj.CoreCompileInputs.cache
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.sourcelink.json
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.dll
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\refint\LabelPrinterLib.dll
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\LabelPrinterLib.pdb
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Debug\net8.0\ref\LabelPrinterLib.dll
