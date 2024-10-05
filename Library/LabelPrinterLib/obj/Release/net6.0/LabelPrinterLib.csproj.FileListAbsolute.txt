@@ -10,3 +10,4 @@ I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterL
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\refint\LabelPrinterLib.dll
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.pdb
 I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\ref\LabelPrinterLib.dll
+I:\moyu\LabelPrinterLib\Library\LabelPrinterLib\obj\Release\net6.0\LabelPrinterLib.sourcelink.json

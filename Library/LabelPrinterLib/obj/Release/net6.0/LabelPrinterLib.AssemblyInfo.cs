@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LabelPrinterLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89694d11acf8ba35f61a1423a50f720bc96e3375")]
 [assembly: System.Reflection.AssemblyProductAttribute("LabelPrinterLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LabelPrinterLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

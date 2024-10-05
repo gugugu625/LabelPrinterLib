@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="LabelPrinterLib">
       <HintPath>..\..\..\Library\LabelPrinterLib\bin\Release\net6.0\LabelPrinterLib.dll</HintPath>
     </Reference>

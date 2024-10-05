@@ -1,24 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO.Ports;
 
 namespace LabelPrinterLib
 {
+    public interface ISerialPortService
+    {
+        void Open();
+        void Close();
+        void Write(byte[] buffer, int offset, int count);
+        byte[] Read(int bufferSize); // 同步读取
+        Task<byte[]> ReadAsync(int bufferSize); // 异步读取
+        bool IsOpen { get; }
+        //event EventHandler<byte[]> DataReceived;
+    }
+    public enum PrinterFontSize
+    {
+        Height16 = 16,
+        Height20 = 20,
+        Height22 = 22,
+        Height24 = 24,
+        Height32 = 32,
+        Height48 = 48,
+        Height64 = 64,
+        Height80 = 80,
+        Height96 = 96,
+    }
+    public enum PrinterBarcodeType
+    {
+        UPCA,
+        UPCE,
+        EAN13,
+        EAN8,
+        CODE39,
+        I25,
+        CODABAR,
+        CODE93,
+        CODE128,
+        CODE11,
+        MSI,
+        T128M,
+        EAN128,
+        T25C,
+        T39C,
+        T39,
+        EAN132,
+        EAN135,
+        EAN82,
+        EAN85,
+        POST,
+        UPCA2,
+        UPCA5,
+        UPCE2,
+        UPCE5,
+        CPOST,
+        PLESSEY,
+        ITF14,
+        EAN14
+
+    }
     public class LabelPrinter
     {
-        SerialPort serialPort;
+        ISerialPortService serialPort;
         List<byte> bufferSend = new List<byte>();
-        public LabelPrinter(string Serialport)
+        public LabelPrinter(ISerialPortService serialPortService)
         {
-            serialPort = new SerialPort(Serialport);
-            serialPort.BaudRate = 115200;
-            serialPort.DataBits = 8;
-            serialPort.Parity = Parity.None;
-            serialPort.StopBits = StopBits.One;
-            serialPort.Handshake = Handshake.None;
+            serialPort = serialPortService;
             serialPort.Open();
         }
         ~LabelPrinter()
@@ -93,7 +138,7 @@ namespace LabelPrinterLib
             bufferSend.Add(c);
             flush();
         }
-        public void drawText(byte[] s,UInt16 x,UInt16 y,UInt16 FontHeight,bool bold,bool underline ,bool colorReverse,bool rotate,byte resizeX,byte resizeY)
+        public void drawText(byte[] s,UInt16 x,UInt16 y, PrinterFontSize FontHeight,bool bold,bool underline ,bool colorReverse,bool rotate,byte resizeX,byte resizeY)
         {
             if (resizeX >= 16 || resizeY >= 16)
             {
@@ -104,7 +149,7 @@ namespace LabelPrinterLib
 
             bufferSend.AddRange(int16ToByte(x));
             bufferSend.AddRange(int16ToByte(y));
-            bufferSend.AddRange(int16ToByte(FontHeight));
+            bufferSend.AddRange(int16ToByte((UInt16)FontHeight));
             byte FontTypeL = 0;
             byte FontTypeH = 0;
             FontTypeH |= (byte)((resizeY & 0b00001111) << 4);
@@ -116,6 +161,57 @@ namespace LabelPrinterLib
             Console.WriteLine(Convert.ToString(FontTypeH, 2).PadLeft(8, '0'));
             bufferSend.Add(FontTypeL);
             bufferSend.Add(FontTypeH);
+            bufferSend.AddRange(s);
+            bufferSend.Add(0x00);
+            flush();
+        }
+        public void drawBarcode(byte[] s, UInt16 x, UInt16 y, PrinterBarcodeType BarcodeType, byte Height, byte UnitWidth, byte rotate)
+        {
+            if ((byte)BarcodeType > 29)
+            {
+                return;
+            }
+            if (UnitWidth < 1 || UnitWidth > 4)
+            {
+                return;
+            }
+            if (rotate > 3)
+            {
+                return;
+            }
+            byte[] header = { 0x1A, 0x30, 0x00 };
+            bufferSend.AddRange(header);
+
+            bufferSend.AddRange(int16ToByte(x));
+            bufferSend.AddRange(int16ToByte(y));
+            bufferSend.Add((byte)BarcodeType);
+            bufferSend.Add(Height);
+            bufferSend.Add(UnitWidth);
+            bufferSend.Add(rotate);
+            bufferSend.AddRange(s);
+            bufferSend.Add(0x00);
+            flush();
+        }
+        public void drawQRCode(byte[] s, UInt16 x, UInt16 y, byte version, byte ECC, byte UnitWidth, byte rotate)
+        {
+            if (UnitWidth < 1 || UnitWidth > 4)
+            {
+                return;
+            }
+            if (rotate > 3)
+            {
+                return;
+            }
+            byte[] header = { 0x1A, 0x31, 0x00 };
+            bufferSend.AddRange(header);
+
+            bufferSend.Add(version);
+            bufferSend.Add(ECC);
+            bufferSend.AddRange(int16ToByte(x));
+            bufferSend.AddRange(int16ToByte(y));
+            
+            bufferSend.Add(UnitWidth);
+            bufferSend.Add(rotate);
             bufferSend.AddRange(s);
             bufferSend.Add(0x00);
             flush();
